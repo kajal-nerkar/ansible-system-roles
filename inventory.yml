@@ -1,0 +1,6 @@
+all:
+  hosts:
+    ec2_instance:
+      ansible_host: ec2-16-171-17-88.eu-north-1.compute.amazonaws.com
+      ansible_user: ubuntu
+      ansible_ssh_private_key_file: ~/.ssh/ansibleworkernode.pem

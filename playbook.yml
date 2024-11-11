@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: yes
+  collections:
+    - mycompany.system
+  roles:
+    - local_accounts
+    - ssh_config

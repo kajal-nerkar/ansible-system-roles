@@ -1,0 +1,13 @@
+namespace: mycompany
+name: system
+version: 1.0.0
+readme: README.md
+authors:
+  - Your Name <your.email@example.com>
+description: An Ansible collection for system configuration, including user accounts and SSH settings.
+license: MIT
+tags:
+  - system
+  - users
+  - ssh
+dependencies: {}
