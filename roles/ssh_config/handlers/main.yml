@@ -1,0 +1,16 @@
+---
+# handlers file for ssh_config role
+
+- name: Restart SSHD
+  ansible.builtin.service:
+    name: ssh
+    state: restarted
+  check_mode: no
+
+
+- name: Restart SSH Service
+  ansible.builtin.service:
+    name: "{{ ssh_service_name }}"
+    state: restarted
+  check_mode: no
+
