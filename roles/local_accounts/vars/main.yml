@@ -1,0 +1,15 @@
+local_accounts_users:
+  - name: local_adm
+    shell: /bin/bash
+    uid: 38000087
+    expiry_date: ''
+    home: /home/local_adm
+    groups: []
+    ssh_public_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxwwvyUhY2zjlhCHtBmpxylWxoPR8GppLNaN9OVBwS2FwQ1eDQqF3VjLi2nytPtCe5t+KFbvU0MxsjsZYjLZ0RJn8sWoJiGTqU74SQ9JqFLUvk2qZ8uneWBDWcnyBXkv3pw1msqPu8tMmUxMA3xFGRQGvxTJqqWwvqCznhk3WkfIRo7uGHvvwTyBsPnLuh8rTSvHAnQRnqTy71Cv8e3EgDyuea1/3oyIyJMRjnpzWpIEU5d58/D+SYbWuEZ1aF+fBe3/3yii0oRmO1u3Gd9p2eNWVoG7i3J1s7qAmEpthZIIE0bGkB2LNGrjnbRchZcyJIVzoxD8pdDaqTKorD0Nhp'  # Add public key content here if needed
+  - name: local_log
+    shell: /bin/sh
+    uid: 38000088
+    expiry_date: '2024-12-31'
+    home: /home/local_log
+    groups: []
+    ssh_public_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxwwvyUhY2zjlhCHtBmpxylWxoPR8GppLNaN9OVBwS2FwQ1eDQqF3VjLi2nytPtCe5t+KFbvU0MxsjsZYjLZ0RJn8sWoJiGTqU74SQ9JqFLUvk2qZ8uneWBDWcnyBXkv3pw1msqPu8tMmUxMA3xFGRQGvxTJqqWwvqCznhk3WkfIRo7uGHvvwTyBsPnLuh8rTSvHAnQRnqTy71Cv8e3EgDyuea1/3oyIyJMRjnpzWpIEU5d58/D+SYbWuEZ1aF+fBe3/3yii0oRmO1u3Gd9p2eNWVoG7i3J1s7qAmEpthZIIE0bGkB2LNGrjnbRchZcyJIVzoxD8pdDaqTKorD0Nhp'  # Add public key content here if needed
