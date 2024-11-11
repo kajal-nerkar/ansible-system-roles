@@ -1,0 +1,57 @@
+---
+# tasks file for local_accounts role
+
+- name: Ensure local user accounts with expiry date are present
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    shell: "{{ item.shell }}"
+    uid: "{{ item.uid }}"
+    home: "{{ item.home }}"
+    groups: "{{ item.groups }}"
+    state: present
+    create_home: yes
+    expires: "{{ (item.expiry_date | to_datetime('%Y-%m-%d')).timestamp() | int }}"
+  loop: "{{ local_accounts_users }}"
+  when: item.expiry_date != ''
+  loop_control:
+    label: "{{ item.name }}"
+
+- name: Ensure local user accounts without expiry date are present
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    shell: "{{ item.shell }}"
+    uid: "{{ item.uid }}"
+    home: "{{ item.home }}"
+    groups: "{{ item.groups }}"
+    state: present
+    create_home: yes
+    expires: -1
+  loop: "{{ local_accounts_users }}"
+  when: item.expiry_date == ''
+  loop_control:
+    label: "{{ item.name }}"
+
+
+# ... rest of your tasks
+
+- name: Set up passwordless SSH authentication
+  ansible.builtin.file:
+    path: "{{ item.home }}/.ssh"
+    state: directory
+    owner: "{{ item.name }}"
+    group: "{{ item.name }}"
+    mode: '0700'
+  loop: "{{ local_accounts_users }}"
+  when: item.ssh_public_key != ''
+  check_mode: no
+
+- name: Add authorized_keys file
+  ansible.builtin.copy:
+    content: "{{ item.ssh_public_key }}"
+    dest: "{{ item.home }}/.ssh/authorized_keys"
+    owner: "{{ item.name }}"
+    group: "{{ item.name }}"
+    mode: '0600'
+  loop: "{{ local_accounts_users }}"
+  when: item.ssh_public_key != ''
+  check_mode: no
