@@ -1,0 +1,31 @@
+In a git repo, create an Ansible collection (name of your choosing) that will contain two roles. You're not asked to upload the collection to ansible-galaxy (nor any private Automation Hub) but it should contain all requirements for uploading it.
+
+role #1: `local_accounts`;
+create a role capable of configuring multiple local user accounts, defined inside a list of dictionaries variable. For each account created, the following fields should be configurable: shell, userid, expiry date, groups it belongs to, path for its home dir.
+Using this logic, the following two accounts should be created:
+name: local_adm
+shell: /bin/bash
+userid: 38000087
+expiry_date: this account should not expire
+home: /home/local_adm
+groups: this user should only belong to its primary group
+name: local_log
+shell: /bin/sh
+userid: 38000088
+expiry_date: this account should expire end of 2024
+home: /home/local_log
+groups: this user should only belong to its primary group
+role #2: `ssh_config`;
+create a role that ensure the ssh daemon has this 3 options configured with the following values:
+PasswordAuthentication: yes
+PermitEmptyPasswords: no
+PermitRootLogin: no
+
+Add functionality to role #1: the role should allow configuring passwordless authentication for the local users created. Please propose your own solution for achieving this and implement it.
+
+Roles should contain proper documentation for the variables used, how to use them, etc.
+
+BONUS task (only if you're done with the above): Make any modifications required to add dry-run (checkmode) support to both roles and make them idempotent.
+Notes:
+Use an Ansible version that supports collections (eg.: ansible-core > 2.12), and for the modules used please use the FQCN.
+You may test your roles in a test host, any small local VM should do.
